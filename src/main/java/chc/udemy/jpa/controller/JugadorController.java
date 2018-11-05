@@ -32,7 +32,7 @@ public class JugadorController {
     @RequestMapping(value = "/form")
     public String crear(Map<String, Object> model){
         JugadorEntity jugadorEntity = new JugadorEntity();
-        model.put("jugador", jugadorEntity);
+        model.put("jugadorEntity", jugadorEntity);
         model.put("titulo","Formulario de jugador");
 
         return "form";

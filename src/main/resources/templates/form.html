@@ -42,7 +42,7 @@
 <!--Empieza el formulario-->
 <div class="container">
     <h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h1>
-    <form th:action="@{/form}" th:object="${jugador}" method="post">
+    <form th:action="@{/form}" th:object="${jugadorEntity}" method="post">
 
         <div class="form-group row">
             <label class=" col-sm-2 col-form-label">Nombre</label>
