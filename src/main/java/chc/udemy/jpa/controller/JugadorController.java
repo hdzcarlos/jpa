@@ -43,9 +43,10 @@ public class JugadorController {
      * @Valid habilita la validación en el objeto mapeado al form
      */
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String guardar(@Valid JugadorEntity jugadorEntity, BindingResult result){
+    public String guardar(@Valid JugadorEntity jugadorEntity, BindingResult result, Model model){
         //Si el resultado contiene errores , retornamos al formulario
         if(result.hasErrors()){
+            model.addAttribute("titulo","Formulario de jugador");
             return "form";
         }
         jugadorDAO.save(jugadorEntity);

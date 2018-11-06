@@ -39,16 +39,26 @@
     </div>
 </nav>
 <!--fin de navBAR-->
+</div>
 <!--Empieza el formulario-->
 <div class="container">
+<!--inicio lista de errores-->
+    <!-- llamamos al objeto del formulario.-->
+    <div th:object="${jugadorEntity}" th:remove="tag">
+        <!-- preguntamos si existe errores en algún campo-->
+        <ul th:if="${#fields.hasErrors('*')}" class="alert alert-danger"
+            role="alert">
+            <!--Recorremos la lista y si existe lo pintamos.-->
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}"></li>
+        </ul>
+<!--FIN lista de errores-->
     <h1 class="text-secondary border border-success border-top-0 border-left-0 border-right-0" th:text="${titulo}"></h1>
     <form th:action="@{/form}" th:object="${jugadorEntity}" method="post">
 
         <div class="form-group row">
             <label class=" col-sm-2 col-form-label">Nombre</label>
             <div class="col-sm-6">
-                <input type="text" th:field="*{nombre}" class="form-control"/>
-
+                <input type="text" th:field="*{nombre}" class="form-control"  th:errorclass="'form-control alert-danger'"/>
                 <small class="form-text text-danger"
                        th:if="${#fields.hasErrors('nombre')}"
                        th:errors="*{nombre}">
@@ -58,7 +68,7 @@
         <div class="form-group row">
             <label class=" col-sm-2 col-form-label">Apellido</label>
             <div class="col-sm-6">
-                <input type="text" th:field="*{apellido}" class="form-control"/>
+                <input type="text" th:field="*{apellido}" class="form-control" th:errorclass="'form-control alert-danger'"/>
                 <!--Con la etiqueta de th:if preguntamos si tiene errores el campo en concreto y los mostramos-->
                 <small class="form-text text-danger"
                        th:if="${#fields.hasErrors('apellido')}"
@@ -69,7 +79,7 @@
         <div class="form-group row">
             <label class=" col-sm-2 col-form-label">Email</label>
             <div class="col-sm-6">
-                <input type="email" th:field="*{email}" class="form-control"/>
+                <input type="text" th:field="*{email}" class="form-control" th:errorclass="'form-control alert-danger'"/>
                 <!--Con la etiqueta de th:if preguntamos si tiene errores el campo en concreto y los mostramos-->
                 <small class="form-text text-danger"
                        th:if="${#fields.hasErrors('email')}"
@@ -80,7 +90,7 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Fecha</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" th:field="*{inscripcion}"/>
+                <input type="text"  th:field="*{inscripcion}" class="form-control" th:errorclass="'form-control alert-danger'"/>
                 <!--Con la etiqueta de th:if preguntamos si tiene errores el campo en concreto y los mostramos-->
                 <small class="form-text text-danger"
                        th:if="${#fields.hasErrors('inscripcion')}"

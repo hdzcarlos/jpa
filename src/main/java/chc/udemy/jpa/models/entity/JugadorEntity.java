@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -37,7 +38,7 @@ public class JugadorEntity implements Serializable {
     private String apellido;
     @NotEmpty
     @Email
-    @Column(name = "email")
+    @Pattern(regexp=".+@.+\\..+", message = "Formato invalido.")
     private String email;
     //Anotación para transformar la fecha para base de datos.
     @NotNull
